@@ -60,5 +60,12 @@ jobs:
         with: 
           name: maven_artifact
           path: staging
-
-        
+      
+      - name: generate report codecov
+        run: mvn cobertura:cobertura
+      - name: list target folder
+        run: ls -a 
+      - name: list target folder
+        run: |
+          cd target
+          ls -a
