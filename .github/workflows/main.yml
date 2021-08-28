@@ -45,7 +45,7 @@ jobs:
           ls -a
           
       - name: copy artifacts to staging dir
-        run: mkdir staging && cp *.jar staging
+        run: mkdir staging && cp target/*.jar staging
         
       - name: Upload a build artifacts
         uses: actions/upload-artifact@v2.2.4
