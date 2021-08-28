@@ -79,4 +79,4 @@ jobs:
         with:
           path: target/site/cobertura/coverage.xml
           repo_token: ${{ secrets.GITHUB_TOKEN }}
- 
+          minimum_coverage: 75
