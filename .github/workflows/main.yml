@@ -71,6 +71,12 @@ jobs:
           ls -a
       - uses: dorny/test-reporter@v1
         with:
+          name: Junit Tests                  # Name of the check run which will be created
+          path: target/surefire-reports/TEST-*.xml                     # Path to test results (inside artifact .zip)
+          reporter: java-junit              # Format of test results
+          
+      - uses: dorny/test-reporter@v1
+        with:
           name: JEST Tests                  # Name of the check run which will be created
           path: target/site/cobertura/coverage.xml                     # Path to test results (inside artifact .zip)
           reporter: java-junit              # Format of test results
