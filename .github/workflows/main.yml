@@ -34,23 +34,15 @@ jobs:
           # Java distribution. See the list of supported distributions in README file
           distribution: adopt
           
-#      - name: Cache Maven packages
-#        uses: actions/cache@v2
-#        with:
-#          path: ~/.m2
-#          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-#          restore-keys: ${{ runner.os }}-m2
+      - name: Cache Maven packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
           
       - name: Build with Maven
         run: mvn -B package --file pom.xml
-        
-      - name: list target folder
-        run: ls -a        
-      
-      - name: list target folder
-        run: |
-          cd target
-          ls -a
           
       - name: copy artifacts to staging dir
         run: mkdir staging && cp target/*.jar staging
@@ -63,12 +55,7 @@ jobs:
       
       - name: generate report codecov
         run: mvn cobertura:cobertura
-      - name: list target folder
-        run: ls -a 
-      - name: list target folder
-        run: |
-          cd target/site/cobertura
-          ls -a
+
       - uses: dorny/test-reporter@v1
         with:
           name: Junit Tests                  # Name of the check run which will be created
