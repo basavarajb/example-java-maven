@@ -35,10 +35,22 @@ jobs:
           distribution: adopt
       - name: Build with Maven
         run: mvn -B package --file pom.xml
+        
       - name: list target folder
-        run: ls -a
+        run: ls -a        
+      
       - name: list target folder
         run: |
           cd target
           ls -a
+          
+      - name: copy artifacts to staging dir
+        run: mkdir staging &* cp *.jar staging
+        
+      - name: Upload a build artifacts
+        uses: actions/upload-artifact@v2.2.4
+        with: 
+          name: maven_artifact
+          path: staging
+
         
