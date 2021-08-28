@@ -34,7 +34,7 @@ jobs:
           # Java distribution. See the list of supported distributions in README file
           distribution: adopt
       - name: Build with Maven
-        run: mvn -b package --file pom.xml
+        run: mvn -B package --file pom.xml
       - name: list target folder
         run: ls -a
       - name: list target folder
