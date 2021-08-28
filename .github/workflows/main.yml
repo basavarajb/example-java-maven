@@ -75,8 +75,8 @@ jobs:
           path: target/surefire-reports/TEST-*.xml                     # Path to test results (inside artifact .zip)
           reporter: java-junit              # Format of test results
           
-      - uses: dorny/test-reporter@v1
+      - uses: 5monkeys/cobertura-action@master
         with:
-          name: JEST Tests                  # Name of the check run which will be created
-          path: target/site/cobertura/coverage.xml                     # Path to test results (inside artifact .zip)
-          reporter: java-junit              # Format of test results
+          path: target/site/cobertura/coverage.xml
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+ 
