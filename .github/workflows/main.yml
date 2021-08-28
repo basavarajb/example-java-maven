@@ -67,11 +67,11 @@ jobs:
         run: ls -a 
       - name: list target folder
         run: |
-          cd target
+          cd target/site/cobertura
           ls -a
       - uses: dorny/test-reporter@v1
         with:
           artifact: test-results            # artifact name
           name: JEST Tests                  # Name of the check run which will be created
-          path: 'target/site/cobertura/coverage.xml'                     # Path to test results (inside artifact .zip)
+          path: target/site/cobertura/coverage.xml                     # Path to test results (inside artifact .zip)
           reporter: java-junit              # Format of test results
